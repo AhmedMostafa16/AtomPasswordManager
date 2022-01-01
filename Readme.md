@@ -1,9 +1,3 @@
-## Name: Ahmed Mostafa Kamel
-
-### Section: 1
-
-# 
-
 # Atom Password Manager
 
 ###### AES-256 powered password manager
