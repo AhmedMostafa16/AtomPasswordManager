@@ -1,38 +1,37 @@
-﻿namespace AtomPasswordManager.View
+﻿namespace AtomPasswordManager.View;
+
+public partial class MasterPasswordForm : Form
 {
-    public partial class MasterPasswordForm : Form
+    public MasterPasswordForm()
     {
-        public MasterPasswordForm()
+        InitializeComponent();
+    }
+
+    private void OkButton_Click(object sender, EventArgs e)
+    {
+        if (PasswordTextbox.Text.Length == 0)
         {
-            InitializeComponent();
+            MessageBox.Show("Please enter your master password!", "Info", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
-
-        private void OkButton_Click(object sender, EventArgs e)
+        else
         {
-            if (PasswordTextbox.Text.Length == 0)
-            {
-                MessageBox.Show("Please enter your master password!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                Manager.MasterPassword = PasswordTextbox.Text;
-                Close();
-            }
-
+            Manager.MasterPassword = PasswordTextbox.Text;
+            Close();
         }
+    }
 
-        private void ShowToggleButton_Click(object sender, EventArgs e)
+    private void ShowToggleButton_Click(object sender, EventArgs e)
+    {
+        if (PasswordTextbox.UseSystemPasswordChar)
         {
-            if (PasswordTextbox.UseSystemPasswordChar)
-            {
-                PasswordTextbox.UseSystemPasswordChar = false;
-                ShowToggleButton.Text = "Hide";
-            }
-            else
-            {
-                PasswordTextbox.UseSystemPasswordChar = true;
-                ShowToggleButton.Text = "Show";
-            }
+            PasswordTextbox.UseSystemPasswordChar = false;
+            ShowToggleButton.Text = "Hide";
+        }
+        else
+        {
+            PasswordTextbox.UseSystemPasswordChar = true;
+            ShowToggleButton.Text = "Show";
         }
     }
 }
